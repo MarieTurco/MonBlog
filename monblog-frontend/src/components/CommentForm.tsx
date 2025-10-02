@@ -30,35 +30,38 @@ export default function CommentForm({ articleId, onCommentAdded }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 space-y-4 border-t pt-6" aria-labelledby="add-comment-title">
-      <h2 id="add-comment-title" className="text-xl font-semibold">Laisser un commentaire</h2>
+    <form onSubmit={handleSubmit} 
+      className="mt-8 space-y-4 border-t-4 border-gray-100 pt-6"
+      aria-labelledby="add-comment-title"
+    >
+      <h3 id="add-comment-title" className="text-xl font-semibold text-brand-dark">Laisser un commentaire</h3>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Votre nom</label>
+        <label className="block text-sm font-medium text-neutral-700">Votre nom</label>
         <input
           type="text"
           value={authorName}
           onChange={(e) => setAuthorName(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:ring focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 shadow-sm focus:ring focus:ring-brand"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Commentaire</label>
+        <label className="block text-sm font-medium text-neutral-700">Commentaire</label>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
           rows={4}
-          className="mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:ring focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 shadow-sm focus:ring focus:ring-brand"
         />
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+        className="rounded-lg bg-brand-dark px-4 py-2 text-white hover:bg-brand-dark disabled:opacity-50 transition"
       >
         {loading ? "Envoi..." : "Publier"}
       </button>

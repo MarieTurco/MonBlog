@@ -12,18 +12,21 @@ export default function ArticleCard({ article }: { article: Article }) {
     : "Non publié";
 
   return (
-    <Link href={`/articles/${article.slug}`} className="block border rounded shadow hover:shadow-lg transition">
+    <Link href={`/articles/${article.slug}`} 
+          className="block bg-white border rounded-lg shadow-md hover:shadow-lg focus:ring-2 transition"
+          aria-label={`Lire l'article : ${title}`}
+    >
       {coverUrl && (
         <img
           src={`${API_URL}${coverUrl}`}
           alt={title}
-          className="w-full h-48 object-cover rounded-t"
+          className="w-full h-56 object-cover rounded-t-lg"
         />
       )}
       <div className="p-4">
-        <h2 className="text-lg font-bold">{title}</h2>
-        <p className="text-sm text-gray-500">Par {author}</p>
-        <p className="text-sm text-gray-400">{publishedDate}</p>
+        <h2 className="text-lg font-bold text-neutral-9OO">{title}</h2>
+        <p className="text-sm text-neutral-600">Par {author}</p>
+        <p className="text-sm text-neutral-500">{publishedDate}</p>
       </div>
     </Link>
   );

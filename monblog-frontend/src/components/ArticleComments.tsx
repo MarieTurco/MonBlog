@@ -6,13 +6,7 @@ import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import { Comment } from "@lib/types";
 
-
-interface Props {
-  articleSlug: string;
-  articleId: string;
-}
-
-export default function ArticleComments({ articleSlug, articleId }: Props) {
+export default function ArticleComments({ articleSlug, articleId }: { articleSlug: string; articleId: string;}) {
   const [comments, setComments] = useState<Comment[]>([]);
 
   const loadComments = async () => {
@@ -24,10 +18,11 @@ export default function ArticleComments({ articleSlug, articleId }: Props) {
     loadComments();
   }, [articleSlug]);
 
-  return (
-    <div>
+   return (
+    <section aria-labelledby="comments-section" className="mt-12">
+      <h2 id="comments-section" className="text-2xl font-semibold mb-6 text-brand-dark">Commentaires</h2>
       <CommentList comments={comments} />
       <CommentForm articleId={articleId} onCommentAdded={loadComments} />
-    </div>
+    </section>
   );
 }
